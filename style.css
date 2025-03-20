@@ -1,0 +1,298 @@
+@font-face {
+    font-family: 'Necto Mono';
+    src: url('./fonts/webNectoMono-Regular.woff2') format('woff2'),
+         url('./fonts/webNectoMono-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body, h1, h2, p, button {
+    font-family: 'Necto Mono', monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    background-color: #3836ec;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1000;
+    transform: translate(-50%, -50%);
+}
+
+.blue-dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: #3836ec;
+    border-radius: 50%;
+    vertical-align: baseline;
+    margin-left: 4px;
+}
+
+body {
+    font-family: 'Necto Mono', monospace;
+    background-color: #ededed;
+    color: #090909;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    background-color: #ededed;
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    box-sizing: border-box;
+}
+
+.header-buttons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 200;
+    margin-left: 10px;
+}
+
+.card-button {
+    font-family: 'Necto Mono', monospace;
+    background: none;
+    color: #090909;
+    border: none;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.card-button::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 4px;
+    background: #3836ec;
+    margin: 5px auto 0 auto;
+    transition: width 0.3s ease;
+}
+
+.card-button:hover {
+    color: #3836ec;
+}
+
+.card-button:hover::after {
+    width: 100%;
+}
+
+.main {
+    flex: 1;
+}
+
+.content-align {
+    padding-left: 5%;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.hero h1 {
+    font-family: 'Necto Mono', monospace;
+    font-weight: 900;
+    font-size: 6rem;
+    text-transform: uppercase;
+    color: #090909;
+    margin: 10px 0;
+    text-align: left;
+}
+
+.hero p {
+    font-family: 'Necto Mono', monospace;
+    font-weight: 200;
+    font-size: 1.3rem;
+    line-height: 1.8;
+    margin: 5px 0;
+    color: #090909;
+}
+
+.card {
+    height: 100vh;
+    width: 100%;
+    font-family: 'Necto Mono', monospace;
+    background-color: #ededed;
+    color: #090909;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-transform: none;
+    font-size: 1rem;
+    line-height: 1.6;
+    padding: 0 5%;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.card-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #3836ec;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.card-content-wrapper {
+    display: flex;
+    gap: 30px;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.card-content {
+    max-width: 50%;
+    text-align: left;
+}
+
+.card-content p {
+    margin-bottom: 15px;
+}
+
+.card-logo {
+    max-width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-img {
+    width: 100%;
+    height: auto;
+}
+
+.scroll-down {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+}
+
+.scroll-down a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 50px;
+    border: 4px solid #090909;
+    background-color: transparent;
+    position: relative;
+    transition: opacity 0.3s ease, border-color 0.3s ease;
+    opacity: 1;
+}
+
+.scroll-down a:hover {
+    border-color: #3836ec;
+}
+
+.scroll-down a span {
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: #3836ec;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: scroll 1.5s infinite;
+    opacity: 1;
+}
+
+@keyframes scroll {
+    0% {
+        opacity: 0;
+        top: 10px;
+    }
+    50% {
+        opacity: 1;
+        top: 25px;
+    }
+    100% {
+        opacity: 0;
+        top: 40px;
+    }
+}
+
+footer {
+    position: relative;
+    width: 100%;
+    background-color: #ededed;
+    color: #090909;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 999;
+}
+
+.footer-text {
+    font-size: 1rem;
+    color: #090909;
+    margin: 0;
+}
+
+.footer-links a {
+    font-size: 1rem;
+    color: #090909;
+    text-decoration: none;
+    margin-left: 20px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #3836ec;
+}
