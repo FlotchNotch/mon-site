@@ -1,86 +1,109 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=PT+Mono&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Mono&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <title>Portfolio - Florian Marie</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Grain background effect -->
     <div class="grain"></div>
+    <!-- Header / Navigation -->
     <header>
-        <div class="logo-container">
-            <img src="https://i.postimg.cc/sDXSdn2F/my-notion-face-transparent-1.png" alt="Flotch Logo" class="logo">
-            <span class="logo-text">Florian Marie</span>
-        </div>
-        <button class="mobile-menu-button" aria-label="Menu" aria-expanded="false">☰</button>
-        <nav class="header-buttons">
-            <a class="header-buttons-item" href="#about">à propos</a>
-            <a class="header-buttons-item" href="#skills">compétences</a>
-            <a class="header-buttons-item" href="#projects">projets</a>
-            <a class="header-buttons-item" href="#email">me contacter</a>            
-        </nav>             
-    </header>
+      <div class="logo-container">
+        <img
+          src="https://i.postimg.cc/sDXSdn2F/my-notion-face-transparent-1.png"
+          alt="Flotch Logo"
+          class="logo"
+        />
+        <span class="logo-text">Florian Marie</span>
+    </div>
+    <button class="mobile-menu-button" aria-expanded="false">☰</button>
+    <nav class="header-buttons">
+      <a href="#about" class="header-buttons-item">À propos</a>
+      <a href="#skills" class="header-buttons-item">Compétences</a>
+      <a href="#projects" class="header-buttons-item">Projets</a>
+      <a href="#contact" class="header-buttons-item">Contact</a>
+    </nav>
+  </header>
+
+    <!-- Section Hero -->
     <section class="hero content-align">
         <div class="scroll-down">
-            <a href="#about">
-                <span></span>
-            </a>
+          <a href="#about">
+            <span></span>
+          </a>
         </div>
-        <h1>Florian Marie <span class="job-title">Développeur Front-End<span class="blue-dot"></span></span></h1>
-        <p class="small-text">Localisation actuelle : 48° 06′ 53″ nord, 1° 40′ 46″ ouest</p>
-    </section>    
-    </div>
-    <main>
+        <h1>
+          Florian Marie
+        </h1>
+        <span class="job-title">
+          Développeur Front-End
+          <span class="blue-dot"></span>
+        </span>
+        <p class="small-text"></p>
+      </section>
+
+<!-- Contenu principal -->
+<main>
+    <div class="card-container">
         <section id="about" class="card">
-            <h2 class="card-title">à propos</h2>
-            <div class="card-content-wrapper">
-                <div class="card-content">
-                    <p>Hello, moi c’est Florian ! Après 13 ans dans le commerce, j’ai décidé de suivre ma passion pour le numérique et de me lancer dans une nouvelle aventure : le développement web.</p>
-                    <p>Curieux et autodidacte, j’ai toujours aimé bidouiller et explorer les possibilités offertes par la tech. Que ce soit en modifiant le software de mon téléphone pendant mon temps libre ou en jonglant entre Windows et Linux en dual boot sur mon ordinateur, j’adore comprendre comment ça fonctionne et optimiser chaque détail.</p>
-                    <p>Je suis fasciné par les palettes de couleurs utilisées dans les films et les séries, ainsi que par les compositions épurées et minimalistes qui donnent du caractère aux images. Cette sensibilité artistique influence directement ma façon de concevoir des interfaces modernes et élégantes.</p>
-                    <p>Ce qui m’inspire, ce sont les designs minimalistes, les animations subtiles et les expériences visuelles qui marquent les esprits. Je passe régulièrement du temps à explorer les tendances du moment, à m’inspirer des meilleures pratiques et à imaginer des solutions à la fois esthétiques et fonctionnelles.</p>
-                    <p>Aujourd’hui, je mets cette passion au service de ma reconversion professionnelle, avec l’envie de créer des expériences web modernes, intuitives et visuellement percutantes. Toujours en quête d’apprentissage, je suis prêt à relever de nouveaux défis et à apporter ma touche personnelle à chaque projet.</p>
-                </div>
-                <div class="card-logo">
-                    <img src="https://i.postimg.cc/sDXSdn2F/my-notion-face-transparent-1.png" alt="Logo de Florian" class="logo-img">
-                </div>
-            </div>
-        </section>
-                
-        <section id="skills" class="card">
-            <h2 class="card-title">compétences</h2>
+            <h2 class="card-title">À propos</h2>
             <div class="card-content">
-                <p>Liste ou détails de tes compétences...</p>
+              <p>Hello, moi c’est Florian ! Après 13 ans dans le commerce, j’ai décidé de suivre ma passion pour le numérique et de me lancer dans une nouvelle aventure : le développement web.</p>
+              <p>Curieux et autodidacte, j’ai toujours aimé bidouiller et explorer les possibilités offertes par la tech. Que ce soit en modifiant le software de mon téléphone pendant mon temps libre ou en jonglant entre Windows et Linux en dual boot sur mon ordinateur, j’adore comprendre comment ça fonctionne et optimiser chaque détail.</p>
+              <p>Je suis fasciné par les palettes de couleurs utilisées dans les films et les séries, ainsi que par les compositions épurées et minimalistes qui donnent du caractère aux images. Cette sensibilité artistique influence directement ma façon de concevoir des interfaces modernes et élégantes.</p>
+              <p>Ce qui m’inspire, ce sont les designs minimalistes, les animations subtiles et les expériences visuelles qui marquent les esprits. Je passe régulièrement du temps à explorer les tendances du moment, à m’inspirer des meilleures pratiques et à imaginer des solutions à la fois esthétiques et fonctionnelles.</p>
+              <p>Aujourd’hui, je mets cette passion au service de ma reconversion professionnelle, avec l’envie de créer des expériences web modernes, intuitives et visuellement percutantes. Toujours en quête d’apprentissage, je suis prêt à relever de nouveaux défis et à apporter ma touche personnelle à chaque projet.</p>
             </div>
-        </section>
-        
-        <section id="projects" class="card">
-            <h2 class="card-title">projets</h2>
+          </section>
+          
+          <section id="skills" class="card">
+            <h2 class="card-title">Compétences</h2>
             <div class="card-content">
-                <p>Présentation de tes projets réalisés ou en cours...</p>
+              <p>Liste ou détails de tes compétences...</p>
             </div>
-        </section>
-        
-        <section id="email" class="card">
-            <h2 class="card-title">me contacter</h2>
+          </section>
+      
+          <section id="projects" class="card">
+            <h2 class="card-title">Projets</h2>
             <div class="card-content">
-                <p>Informations ou formulaire de contact...</p>
+              <p>Présentation de tes projets réalisés ou en cours...</p>
             </div>
-        </section>
-    </main>
-    <footer>
-        <p class="footer-text">©2025 Florian Marie. Tous droits réservés</p>
-        <div class="footer-links">
-            <a href="#privacy-policy">Politique de confidentialité</a>
-            <a href="#imprint">Mentions légales</a>
-            <a href="#terms">Conditions générales</a>
+          </section>
+      
+          <section id="email" class="card">
+            <h2 class="card-title">Me contacter</h2>
+            <div class="card-content">
+              <p>Informations ou formulaire de contact...</p>
+            </div>
+          </section>
         </div>
+      </main>
+
+    <!-- Footer -->
+    <footer>
+      <p class="footer-text">©2025 Florian Marie. Tous droits réservés</p>
+      <div class="footer-links">
+        <a href="#privacy-policy">Politique de confidentialité</a>
+        <a href="#imprint">Mentions légales</a>
+        <a href="#terms">Conditions générales</a>
+      </div>
     </footer>
+
+    <!-- Cursor dot -->
     <div class="cursor-dot"></div>
+
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

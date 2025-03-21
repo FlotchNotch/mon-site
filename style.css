@@ -1,523 +1,381 @@
+/* ---------------------------------------------------------------------------
+   1. RESET & VARIABLES
+--------------------------------------------------------------------------- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-html {
+  }
+  
+  :root {
+    --primary: #3836ec;
+    --secondary: #101524;
+    --bg: #cbcbcb;
+    --card-bg: #c0c0c0;
+  }
+  
+  /* ---------------------------------------------------------------------------
+     2. GLOBAL STYLES
+  --------------------------------------------------------------------------- */
+  html {
     scroll-behavior: smooth;
-}
-
-/* Animated Grain Effect */
-.grain {
+  }
+  
+  body {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+    background: var(--bg);
+    color: var(--secondary);
+    line-height: 1.8;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+  
+  /* ---------------------------------------------------------------------------
+     3. GRAIN EFFECT
+  --------------------------------------------------------------------------- */
+  .grain {
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
     pointer-events: none;
-    z-index: 1001;
+    z-index: 300;
     transform: translateZ(0);
-}
-
-.grain:before {
+  }
+  
+  .grain::before {
     content: "";
+    position: fixed;
     top: -10rem;
     left: -10rem;
     width: calc(100% + 20rem);
     height: calc(100% + 20rem);
-    z-index: 9999;
-    position: fixed;
     background-image: url(https://upload.wikimedia.org/wikipedia/commons/5/5c/Image_gaussian_noise_example.png);
-    opacity: 0.2; /* Augmenter l'opacité pour un effet plus visible */
+    opacity: 0.20;
     pointer-events: none;
     animation: noise 1s steps(2) infinite;
-}
-
-@keyframes noise {
-    0% { transform: translate3d(0,9rem,0) }
-    10% { transform: translate3d(-1rem,-4rem,0) }
-    20% { transform: translate3d(-8rem,2rem,0) }
-    30% { transform: translate3d(9rem,-9rem,0) }
-    40% { transform: translate3d(-2rem,7rem,0) }
-    50% { transform: translate3d(-9rem,-4rem,0) }
-    60% { transform: translate3d(2rem,6rem,0) }
-    70% { transform: translate3d(7rem,-8rem,0) }
-    80% { transform: translate3d(-9rem,1rem,0) }
-    90% { transform: translate3d(6rem,-5rem,0) }
-    to { transform: translate3d(-7rem,0,0) }
-}
-
-.cursor-dot {
+  }
+  
+  @keyframes noise {
+    0% { transform: translate3d(0, 9rem, 0); }
+    10% { transform: translate3d(-1rem, -4rem, 0); }
+    20% { transform: translate3d(-8rem, 2rem, 0); }
+    30% { transform: translate3d(9rem, -9rem, 0); }
+    40% { transform: translate3d(-2rem, 7rem, 0); }
+    50% { transform: translate3d(-9rem, -4rem, 0); }
+    60% { transform: translate3d(2rem, 6rem, 0); }
+    70% { transform: translate3d(7rem, -8rem, 0); }
+    80% { transform: translate3d(-9rem, 1rem, 0); }
+    90% { transform: translate3d(6rem, -5rem, 0); }
+    100% { transform: translate3d(-7rem, 0, 0); }
+  }
+  
+  /* ---------------------------------------------------------------------------
+     4. CURSOR & BLUE DOT
+  --------------------------------------------------------------------------- */
+  .cursor-dot {
     position: fixed;
     top: 0;
     left: 0;
     width: 12px;
     height: 12px;
-    background-color: #3836ec;
+    background: var(--primary);
     border-radius: 50%;
     pointer-events: none;
     z-index: 1002;
     transform: translate(-50%, -50%);
-}
-
-/* Hide cursor dot on touch devices */
-@media (hover: none) {
+  }
+  
+  @media (hover: none) {
     .cursor-dot {
-        display: none;
+      display: none;
     }
-}
-
-.blue-dot {
+  }
+  
+  .blue-dot {
     display: inline-block;
     width: 20px;
     height: 20px;
-    background-color: #3836ec;
+    background: var(--primary);
     border-radius: 50%;
     vertical-align: baseline;
     margin-left: 4px;
-}
-
-body {
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 400; /* Poids Regular */
-    background-color: #cbcbcb;
-    color: #090909;
-    line-height: 1.8; /* Amélioration de la lisibilité */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 100vh;
-    position: relative;
-    overflow-x: hidden;
-}
-
+  }
+  
+/* ---------------------------------------------------------------------------
+   HEADER & NAVIGATION
+--------------------------------------------------------------------------- */
 header {
     position: fixed;
+    top: 0;
     width: 100%;
     height: 80px;
-    background-color: #cbcbcb; /* Slightly transparent */
+    background: var(--bg);
     z-index: 999;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     padding: 0 5%;
-    box-sizing: border-box;
-    backdrop-filter: blur(10px); /* Optional: Adds a blur effect for a frosted look */
-}
-
-
-.header-buttons {
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+  }
+  
+  header::before {
+    content: "";
+    position: absolute;
+    top: -10rem;
+    left: -10rem;
+    width: calc(100% + 20rem);
+    height: calc(100% + 20rem);
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/5/5c/Image_gaussian_noise_example.png);
+    opacity: 0.20;
+    pointer-events: none;
+    animation: noise 1s steps(2) infinite;
+    z-index: -1;
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .logo {
+    height: 50px;
+    width: auto;
+  }
+  
+  .logo-text {
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: var(--secondary);
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .logo-text:hover {
+    color: var(--primary);
+  }
+  
+  .header-buttons {
     display: flex;
     align-items: center;
     gap: 20px;
-}
-
-.header-buttons-item {
-    font-family: 'Work Sans', sans-serif;
+  }
+  
+  .header-buttons-item {
     font-weight: 500;
-    background: none;
-    color: #101524;
-    border: none;
     font-size: 1.1rem;
-    cursor: pointer;
-    transition: color 0.3s ease;
-    position: relative;
+    color: var(--secondary);
     text-decoration: none;
-    line-height: 1.8;
     padding: 5px 10px;
-}
-
-.header-buttons-item::after {
-    content: "";
-    display: block;
-    width: 0;
-    height: 4px;
-    background: #3836ec;
-    margin: 5px auto 0 auto;
-    transition: width 0.3s ease;
-}
-
-.header-buttons-item:hover {
-    color: #3836ec;
-}
-
-.header-buttons-item:hover::after {
-    width: 100%;
-}
-
-/* Mobile menu button (hidden by default) */
-.mobile-menu-button {
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .header-buttons-item:hover {
+    color: var(--primary);
+  }
+  
+  .mobile-menu-button {
     display: none;
-    background: none;
-    border: none;
     font-size: 1.5rem;
     cursor: pointer;
     z-index: 1000;
-}
-
-/* Media query for tablet and mobile */
-@media (max-width: 1023px) {
+  }
+  
+  /* ---------------------------------------------------------------------------
+     RESPONSIVE MENU FOR MOBILE
+  --------------------------------------------------------------------------- */
+  @media (max-width: 1023px) {
     header {
-        height: 70px;
+      height: 70px;
     }
-    
-    /* Positionnement et transitions pour le menu mobile */
+  
     .header-buttons {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 70%;
-        height: 100vh;
-        background-color: #cbcbcb;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        transition: right 0.3s ease;
-        z-index: 1000;
-        gap: 30px;
-        padding: 20px;
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 70%;
+      height: 100vh;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      background: var(--bg);
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+      transition: right 0.3s ease;
     }
-
+  
     .header-buttons.active {
-        right: 0; /* Affiche le menu mobile */
+      right: 0;
     }
-
+  
     .mobile-menu-button {
-        display: block;
-        color: #101524;
-        font-size: 1.8rem;
-        transition: color 0.3s ease;
+      display: block;
+      font-size: 1.8rem;
+      color: var(--secondary);
+      background: none;
+      border: none;
+      transition: color 0.3s ease;
     }
-    
+  
     .mobile-menu-button:hover {
-        color: #3836ec;
+      color: var(--primary);
     }
-    
+  
     .header-buttons-item {
-        font-size: 1.3rem;
-        padding: 10px 15px;
+      font-size: 1.3rem;
+      text-align: center;
     }
-}
-
-.logo-container {
-    display: flex;
-    align-items: center;
-}
-
-.logo {
-    height: 50px;
-    width: auto;
-}
-
-.logo-text {
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 500;
-    font-size: 1.1rem;
-    color: #101524;
-    margin-left: 10px;
-}
-
-@media (max-width: 767px) {
-    .logo {
-        height: 40px;
-    }
-    
-    .logo-text {
-        font-size: 1.2rem;
-    }
-}
-
-.card-button {
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 400; /* Regular */
-    background: none;
-    color: #101524;
-    border: none;
-    font-size: 1.5rem; /* Taille pour le texte */
-    margin-left: 10px;
-    cursor: pointer;
-    transition: color 0.3s ease;
+  }
+  
+  /* ---------------------------------------------------------------------------
+     6. MAIN CONTENT & HERO SECTION
+  --------------------------------------------------------------------------- */
+  .hero {
     position: relative;
-    text-transform: none; /* Enlève les majuscules */
-    text-decoration: none;
-    line-height: 1.8; /* Lisibilité améliorée */
-}
-
-
-@media (max-width: 767px) {
-    .card-button {
-        font-size: 1.2rem;
-        margin-left: 0;
-    }
-}
-
-.card-button::after {
-    content: "";
-    display: block;
-    width: 0;
-    height: 4px;
-    background: #3836ec;
-    margin: 5px auto 0 auto;
-    transition: width 0.3s ease;
-}
-
-.card-button:hover {
-    color: #3836ec;
-}
-
-.card-button:hover::after {
-    width: 100%;
-}
-
-.main {
-    flex: 1;
-    position: relative;
-    z-index: 2;
-}
-
-.content-align {
-    padding-left: 5%;
-}
-
-/* HERO SECTION */
-.hero {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centré verticalement */
-    align-items: center; /* Centré horizontalement */
-    height: 100vh; /* Pleine hauteur de l'écran */
-    background-color: #cbcbcb; /* Couleur de fond pour un bon contraste */
-    text-align: center; /* Centrer les textes */
-    position: relative; /* Position pour la gestion des enfants */
-    padding: 20px;
-    z-index: 1; /* S'assurer qu'il est au-dessus du grain */
-}
-
-/* TITRE DU HERO */
-.hero h1 {
-    font-family: 'Work Sans', sans-serif;
-    font-size: 3rem; /* Ajustez selon le design */
-    font-weight: 400; /* Poids Regular */
-    color: #101524; /* Texte noir */
-    line-height: 1.8; /* Amélioration de la lisibilité */
-    margin-bottom: 20px; /* Espacement avec le paragraphe */
-}
-
-/* TEXTE SECONDAIRE */
-.hero p {
-    font-family: 'Work Sans', sans-serif;
-    font-size: 1.2rem; /* Taille légèrement plus petite */
-    font-weight: 400; /* Poids Regular */
-    color: #101524; /* Texte gris pour le contraste */
-    margin-top: 10px;
-    line-height: 1.8; /* Amélioration de la lisibilité */
-}
-
-.hero-link {
-    display: inline-flex;
-    align-items: center;
-    text-decoration: none;
-    color: #6c63ff; /* Purple accent color */
-    font-size: 1.2rem;
-    font-weight: 500;
-    margin-top: 20px;
-    transition: color 0.3s ease;
-}
-
-.hero-link:hover {
-    color: #5349d0; /* Slightly darker purple */
-}
-
-@media (max-width: 1023px) {
-    .hero h1 {
-        font-size: 4rem;
-    }
-}
-
-@media (max-width: 767px) {
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-    
-    .hero p {
-        font-size: 1rem;
-    }
-}
-
-/* Les styles des cartes */
-.card {
-    margin: 30px 5%;       /* 5% de marge à gauche et à droite pour être aligné avec le header */
-    padding: 25px;         /* Rembourrage interne pour un contenu aéré */
-    width: calc(100% - 10%);  /* Prend 90% de la largeur totale, comme le contenu du header */
-    min-height: 450px;     /* Hauteur minimale pour garder un rendu agréable */
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 400;
-    background-color: #c0c0c0;
-    color: #101524;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box; /* Inclut le padding dans la largeur calc */
-    overflow: hidden;
-    position: relative;
-    z-index: 1;
-}
-
-/* Reste des styles internes aux cartes */
-.card-content-wrapper {
-    display: flex;
-    gap: 40px;              /* Espace entre le contenu et le logo */
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 15px 0;
-}
-
-.card-content {
-    max-width: 60%;
-    padding: 20px;
-    line-height: 1.6;
-}
-
-.card-logo {
-    max-width: 40%;
-    padding: 15px;
-}
-
-@media (max-width: 1023px) {
-    .card {
-        margin: 15px auto; /* Réduit l'espacement externe sur les écrans moyens */
-        padding: 15px; /* Ajuste le rembourrage interne */
-        width: 95%; /* Plus proche des bords */
-    }
-    
-    .card-content-wrapper {
-        flex-direction: column-reverse; /* Réorganisation pour mobiles */
-        gap: 15px; 
-    }
-
-    .card-content, .card-logo {
-        max-width: 100%; 
-    }
-
-    .card-logo {
-        margin-bottom: 10px;
-        align-self: center;
-    }
-}
-
-@media (max-width: 767px) {
-    .card {
-        padding: 10px; /* Encore plus compact pour les petits écrans */
-        margin: 10px auto;
-    }
-    
-    .card-title {
-        font-size: 1.5rem; /* Réduction du titre */
-        margin-top: 20px;
-    }
-    
-    .card-content-wrapper {
-        gap: 10px; /* Espacement plus serré */
-    }
-    
-    .card-logo {
-        max-width: 80%; 
-    }
-}
-
-
-.scroll-down a {
-    display: flex;
     justify-content: center;
-    align-items: center;
-    width: 30px;
-    height: 50px;
-    border: 4px solid #101524;
-    background-color: transparent;
-    transition: opacity 0.3s ease, border-color 0.3s ease;
-    opacity: 1;
-}
-
-.scroll-down a:hover {
-    border-color: #3836ec;
-}
-
-.scroll-down a span {
-    display: block;
-    width: 10px;
-    height: 10px;
-    background: #3836ec;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: scroll 1.5s infinite;
-    opacity: 1;
-}
-
-@keyframes scroll {
-    0% {
-        opacity: 0;
-        top: 10px;
-    }
-    50% {
-        opacity: 1;
-        top: 25px;
-    }
-    100% {
-        opacity: 0;
-        top: 40px;
-    }
-}
-
-footer {
-    position: relative;
-    width: 100%;
-    background-color: #cbcbcb;
-    color: #101524;
+    align-items: flex-start;
+    height: 100vh;
+    background: var(--bg);
+    padding: 0 5%;
+    text-align: left;
+  }
+  
+  .hero h1 {
+    font-size: 6rem;
+    font-weight: 300;
+    color: var(--secondary);
+    margin-bottom: 0.5rem;
+  }
+  
+  .hero .job-title {
+    font-size: 6rem;
+    font-weight: 300;
+    color: var(--secondary);
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    box-sizing: border-box;
-    z-index: 999;
-}
-
-.footer-text {
+    gap: 0.5rem;
+  }
+  
+  .hero .blue-dot {
+    width: 18px;
+    height: 18px;
+    background: var(--primary);
+    border-radius: 50%;
+    display: inline-block;
+    transform: translateY(25px);
+  }
+  
+  @media (max-width: 1023px) {
+    .hero h1 {
+      font-size: 3.5rem;
+    }
+  
+    .hero .job-title {
+      font-size: 3rem;
+    }
+  
+    .hero .blue-dot {
+      width: 10px;
+      height: 10px;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+  
+    .hero .job-title {
+      font-size: 2rem;
+    }
+  
+    .hero .blue-dot {
+      width: 8px;
+      height: 8px;
+    }
+  }
+  
+  /* ---------------------------------------------------------------------------
+     7. CARDS MODERNES & MINIMALISTES
+  --------------------------------------------------------------------------- */
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    padding: 0 5%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .card {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+    background: var(--card-bg);
+    color: var(--secondary);
+    border-radius: 8px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: auto;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .card.same-height {
+    height: 400px;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: left;
+    font-weight: 700;
+  }
+  
+  .card-content {
     font-size: 1rem;
-    color: #101524;
-    margin: 0;
-}
-
-.footer-links a {
-    font-size: 1rem;
-    color: #101524;
-    text-decoration: none;
-    margin-left: 20px;
-    transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-    color: #3836ec;
-}
-
-@media (max-width: 767px) {
-    footer {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-        padding: 15px;
+    line-height: 1.8;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  @media (max-width: 1023px) {
+    .card-container {
+      gap: 2.5rem;
     }
-    
-    .footer-links {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
+  
+    .card.same-height {
+      height: auto;
     }
-    
-    .footer-links a {
-        margin-left: 0;
+  }
+  
+  @media (max-width: 767px) {
+    .card-container {
+      gap: 2rem;
     }
-}
+  
+    .card {
+      padding: 1.5rem;
+    }
+  }
+  
