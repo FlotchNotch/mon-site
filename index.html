@@ -2,37 +2,41 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Mono&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>Portfolio - Florian Marie</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="grain"></div>
     <header>
         <div class="logo-container">
             <img src="https://i.postimg.cc/sDXSdn2F/my-notion-face-transparent-1.png" alt="Flotch Logo" class="logo">
             <span class="logo-text">Florian Marie</span>
         </div>
-        <div class="header-buttons">
-            <button class="card-button" data-scroll="#about">À PROPOS</button>
-            <button class="card-button" data-scroll="#skills">COMPÉTENCES</button>
-            <button class="card-button" data-scroll="#projects">PROJETS</button>
-            <button class="card-button" data-scroll="#email">ME CONTACTER</button>
-        </div>        
+        <button class="mobile-menu-button" aria-label="Menu" aria-expanded="false">☰</button>
+        <nav class="header-buttons">
+            <a class="header-buttons-item" href="#about">à propos</a>
+            <a class="header-buttons-item" href="#skills">compétences</a>
+            <a class="header-buttons-item" href="#projects">projets</a>
+            <a class="header-buttons-item" href="#email">me contacter</a>            
+        </nav>             
     </header>
     <section class="hero content-align">
-        <h1>Florian Marie</h1>
-        <h1>Développeur Front-End<span class="blue-dot"></span></h1>
+        <div class="scroll-down">
+            <a href="#about">
+                <span></span>
+            </a>
+        </div>
+        <h1>Florian Marie <span class="job-title">Développeur Front-End<span class="blue-dot"></span></span></h1>
         <p class="small-text">Localisation actuelle : 48° 06′ 53″ nord, 1° 40′ 46″ ouest</p>
-    </section> 
-    <div class="scroll-down">
-        <a href="#about">
-            <span></span>
-        </a>
+    </section>    
     </div>
-
     <main>
         <section id="about" class="card">
-            <h2 class="card-title">À PROPOS</h2>
+            <h2 class="card-title">à propos</h2>
             <div class="card-content-wrapper">
                 <div class="card-content">
                     <p>Hello, moi c’est Florian ! Après 13 ans dans le commerce, j’ai décidé de suivre ma passion pour le numérique et de me lancer dans une nouvelle aventure : le développement web.</p>
@@ -48,21 +52,21 @@
         </section>
                 
         <section id="skills" class="card">
-            <h2 class="card-title">COMPÉTENCES</h2>
+            <h2 class="card-title">compétences</h2>
             <div class="card-content">
                 <p>Liste ou détails de tes compétences...</p>
             </div>
         </section>
         
         <section id="projects" class="card">
-            <h2 class="card-title">PROJETS</h2>
+            <h2 class="card-title">projets</h2>
             <div class="card-content">
                 <p>Présentation de tes projets réalisés ou en cours...</p>
             </div>
         </section>
         
         <section id="email" class="card">
-            <h2 class="card-title">ME CONTACTER</h2>
+            <h2 class="card-title">me contacter</h2>
             <div class="card-content">
                 <p>Informations ou formulaire de contact...</p>
             </div>

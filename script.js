@@ -1,9 +1,7 @@
 // Gestion du curseur personnalisé (dot)
 const dot = document.querySelector('.cursor-dot');
 
-if (!dot) {
-    console.error('L\'élément avec la classe "cursor-dot" est introuvable.');
-} else {
+if (dot) {
     let mouseX = 0, mouseY = 0; // Position actuelle de la souris
     let dotX = 0, dotY = 0;     // Position actuelle du curseur personnalisé
 
@@ -28,33 +26,64 @@ if (!dot) {
 
     // Lancement de l'animation
     animateDot();
+} else {
+    console.warn('L\'élément avec la classe "cursor-dot" est introuvable.');
+}
+
+// Gestion du menu mobile
+const mobileMenuButton = document.querySelector('.mobile-menu-button');
+const headerButtons = document.querySelector('.header-buttons');
+
+if (mobileMenuButton && headerButtons) {
+    mobileMenuButton.addEventListener('click', () => {
+        headerButtons.classList.toggle('active');
+
+        // Mise à jour de l'état ARIA pour l'accessibilité
+        const isOpen = headerButtons.classList.contains('active');
+        mobileMenuButton.setAttribute('aria-expanded', isOpen);
+
+        // Changement du symbole du menu
+        mobileMenuButton.textContent = isOpen ? '✕' : '☰';
+    });
+} else {
+    console.warn('Le bouton du menu mobile ou les boutons de navigation sont introuvables.');
 }
 
 // Gestion des boutons avec défilement fluide
-const buttons = document.querySelectorAll('.card-button');
+const buttons = document.querySelectorAll('.card-button, .header-buttons-item');
 
-buttons.forEach(button => {
-    button.addEventListener('click', (event) => {
-        event.preventDefault(); // Bloque le comportement de clic par défaut
+if (buttons.length > 0) {
+    buttons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            event.preventDefault(); // Empêche le comportement par défaut
 
-        const targetId = button.getAttribute('data-scroll'); // Récupère l'ID cible
-        const targetElement = document.querySelector(targetId);
+            const targetId = button.getAttribute('href'); // Récupère l'attribut href
+            const targetElement = document.querySelector(targetId);
 
-        if (targetElement) {
-            // Défilement fluide vers l'élément cible
-            const headerOffset = 100; // Compense la hauteur du header
-            const elementPosition = targetElement.offsetTop;
-            const offsetPosition = elementPosition - headerOffset;
+            // Ferme le menu mobile si ouvert
+            if (headerButtons && headerButtons.classList.contains('active')) {
+                headerButtons.classList.remove('active');
+                mobileMenuButton.textContent = '☰';
+            }
 
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
-        } else {
-            console.warn(`L'élément avec l'ID "${targetId}" est introuvable.`);
-        }
+            if (targetElement) {
+                // Défilement fluide vers l'élément cible
+                const headerOffset = 80; // Compense la hauteur du header
+                const elementPosition = targetElement.offsetTop;
+                const offsetPosition = elementPosition - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            } else {
+                console.warn(`L'élément avec l'ID "${targetId}" est introuvable.`);
+            }
+        });
     });
-});
+} else {
+    console.warn('Aucun bouton de navigation trouvé.');
+}
 
-// Ajout du défilement fluide natif
+// Défilement fluide natif activé par CSS (supplémentaire)
 document.documentElement.style.scrollBehavior = 'smooth';
