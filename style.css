@@ -19,7 +19,6 @@ h1, h2, h3 {
   font-weight: 700;
 }
 
-/* Sélection de texte */
 ::selection {
   background: var(--secondary);
   color: var(--bg);
@@ -28,6 +27,49 @@ h1, h2, h3 {
 ::-moz-selection {
   background: var(--secondary);
   color: var(--bg);
+}
+/* Personnalisation de la scrollbar pour Webkit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+  transition: opacity 0.5s ease;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+  transition: opacity 0.5s ease;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e4e4e4;
+  border-radius: 50px;
+  border: 3px solid var(--bg);
+  transition: opacity 0.5s ease;
+}
+
+/* Masque la scrollbar lorsque le body n'a pas la classe "scrolling" */
+body:not(.scrolling) ::-webkit-scrollbar,
+body:not(.scrolling) ::-webkit-scrollbar-track,
+body:not(.scrolling) ::-webkit-scrollbar-thumb {
+  opacity: 0;
+}
+
+/* Pour Firefox (personnalisation limitée) */
+body {
+  scrollbar-width: thin;
+  scrollbar-color: #e4e4e4 var(--bg);
+  transition: scrollbar-color 0.5s ease;
+}
+
+body:not(.scrolling) {
+  /* On ne peut pas animer la disparition sur Firefox, mais on passe le thumb en transparent */
+  scrollbar-color: transparent var(--bg);
+}
+
+body:not(.scrolling) ::-webkit-scrollbar,
+body:not(.scrolling) ::-webkit-scrollbar-track,
+body:not(.scrolling) ::-webkit-scrollbar-thumb {
+  opacity: 0;
 }
 
 /* ===========================================================================
@@ -105,7 +147,7 @@ body {
   border-radius: 50%;
   pointer-events: none;
   z-index: 1002;
-  transform: translate(-50%, -50%); /* Ajuste ceci si nécessaire */
+  transform: translate(-50%, -50%);
 }
 
 @media (hover: none) {

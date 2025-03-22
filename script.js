@@ -106,3 +106,21 @@ const revealCards = () => {
 window.addEventListener('scroll', revealCards);
 // Appel initial au chargement de la page
 revealCards();
+
+
+// ---------------------------------------------------------------------------
+// 5. Disparition de la scrollbar en l'absence de défilement (appliquée sur <html>)
+// ---------------------------------------------------------------------------
+let scrollingTimeout;
+
+window.addEventListener('scroll', () => {
+  // Ajoute la classe "scrolling" sur <html> dès que l'utilisateur scrolle
+  document.documentElement.classList.add('scrolling');
+
+  // Réinitialise le timer de disparition
+  clearTimeout(scrollingTimeout);
+  scrollingTimeout = setTimeout(() => {
+    // Retire la classe "scrolling" après 600ms d'inactivité
+    document.documentElement.classList.remove('scrolling');
+  }, 600);
+});
