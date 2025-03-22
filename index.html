@@ -2,7 +2,10 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,11 +18,15 @@
   <body>
     <!-- Effet de grain en fond -->
     <div class="grain"></div>
-    
+
     <!-- Header et navigation (desktop) -->
     <header>
       <div class="logo-container">
-        <img src="https://i.postimg.cc/sDXSdn2F/my-notion-face-transparent-1.png" alt="Flotch Logo" class="logo" />
+        <img
+          src="https://i.postimg.cc/sDXSdn2F/my-notion-face-transparent-1.png"
+          alt="Flotch Logo"
+          class="logo"
+        />
         <span class="logo-text">Florian Marie</span>
       </div>
       <nav class="header-buttons">
@@ -30,14 +37,16 @@
       </nav>
       <button class="mobile-menu-button" aria-expanded="false">☰</button>
     </header>
-    
+
     <!-- Menu mobile (affiché en mobile via les media queries) -->
     <!-- Il sera repositionné via CSS et géré par le JS -->
-    
+
     <!-- Section Hero -->
     <section class="hero content-align">
       <div class="scroll-down">
-        <a href="#about"><span class="arrow"></span></a>
+        <a href="#about">
+          <span class="arrow"></span>
+        </a>
       </div>
       <h1>Florian Marie</h1>
       <span class="job-title">
@@ -45,7 +54,7 @@
       </span>
       <p class="small-text"></p>
     </section>
-    
+
     <!-- Contenu principal -->
     <main>
       <div class="card-container">
@@ -54,17 +63,25 @@
           <h2 class="card-title">À propos</h2>
           <div class="card-content">
             <p>
-              Hello, moi c’est Florian ! Après 13 ans dans le commerce, j’ai décidé de suivre ma passion pour le numérique et de me lancer dans une nouvelle aventure : le développement web.
+              Hello, moi c’est Florian ! Après 13 ans dans le commerce, j’ai décidé
+              de suivre ma passion pour le numérique et de me lancer dans une nouvelle
+              aventure : le développement web.
             </p>
             <p>
-              Curieux et autodidacte, j’ai toujours aimé bidouiller et explorer les possibilités offertes par la tech. Que ce soit en modifiant le software de mon téléphone pendant mon temps libre ou en jonglant entre Windows et Linux en dual boot sur mon ordinateur, j’adore comprendre comment ça fonctionne et optimiser chaque détail.
+              Curieux et autodidacte, j’ai toujours aimé bidouiller et explorer les
+              possibilités offertes par la tech. Que ce soit en modifiant le software
+              de mon téléphone pendant mon temps libre ou en jonglant entre Windows et
+              Linux en dual boot sur mon ordinateur, j’adore comprendre comment ça
+              fonctionne et optimiser chaque détail.
             </p>
             <p>
-              Je suis fasciné par les palettes de couleurs utilisées dans les films et les séries, ainsi que par les compositions épurées et minimalistes qui donnent du caractère aux images.
+              Je suis fasciné par les palettes de couleurs utilisées dans les films et
+              les séries, ainsi que par les compositions épurées et minimalistes qui
+              donnent du caractère aux images.
             </p>
           </div>
         </section>
-    
+
         <!-- Card: Compétences -->
         <section id="skills" class="card">
           <h2 class="card-title">Compétences</h2>
@@ -85,7 +102,7 @@
             </div>
           </div>
         </section>
-    
+
         <!-- Card: Projets -->
         <section id="projects" class="card">
           <h2 class="card-title">Projets</h2>
@@ -93,22 +110,38 @@
             <p>Présentation de vos projets réalisés ou en cours...</p>
           </div>
         </section>
-    
+
         <!-- Card: Me contacter -->
         <section id="contact" class="card">
           <h2 class="card-title">Me contacter</h2>
           <div class="card-content">
-            <p>Envoyez-moi un e-mail en remplissant le formulaire ci-dessous :</p>
-            <form action="mailto:votremail@example.com" method="post" enctype="text/plain" class="contact-form">
-              <input type="email" name="email" placeholder="Votre e-mail" required>
-              <textarea name="message" placeholder="Votre message" required></textarea>
+            <p>
+              Envoyez-moi un e-mail en remplissant le formulaire ci-dessous :
+            </p>
+            <form
+              action="mailto:votremail@example.com"
+              method="post"
+              enctype="text/plain"
+              class="contact-form"
+            >
+              <input
+                type="email"
+                name="email"
+                placeholder="Votre e-mail"
+                required
+              />
+              <textarea
+                name="message"
+                placeholder="Votre message"
+                required
+              ></textarea>
               <button type="submit" class="header-btn">Envoyer</button>
             </form>
           </div>
         </section>
       </div>
     </main>
-    
+
     <!-- Footer -->
     <footer>
       <p class="footer-text">©2025 Florian Marie. Tous droits réservés</p>
@@ -118,10 +151,10 @@
         <a href="#terms">Conditions générales</a>
       </div>
     </footer>
-    
+
     <!-- Curseur personnalisé (dot) -->
     <div class="cursor-dot"></div>
-    
+
     <script src="script.js"></script>
   </body>
 </html>

@@ -114,7 +114,6 @@ body {
   }
 }
 
-
 .blue-dot {
   display: inline-block;
   width: 20px;
@@ -319,7 +318,7 @@ header {
 }
 
 /* ===========================================================================
-   8. CARTES MODERNES
+   8. CARTES MODERNES ET CONTACT
 ============================================================================ */
 .card-container {
   display: flex;
@@ -431,7 +430,7 @@ header {
 }
 
 /* ===========================================================================
-   9. FOOTER (mise à jour pour un footer "épais" dans le même style que le header)
+   9. FOOTER
 ============================================================================ */
 footer {
   background: var(--bg);
@@ -468,7 +467,7 @@ footer {
 }
 
 /* ===========================================================================
-   Flèche Animée "Scroll Down"
+   10. FLÈCHE ANIMÉE "SCROLL DOWN"
 ============================================================================ */
 .scroll-down {
   position: absolute;

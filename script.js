@@ -4,22 +4,22 @@
 const dot = document.querySelector('.cursor-dot');
 
 if (dot) {
-  let mouseX = 0, mouseY = 0;       // Coordonnées actuelles de la souris
-  let dotX = 0, dotY = 0;           // Coordonnées actuelles du dot
+  let mouseX = 0, mouseY = 0;  // Coordonnées de la souris
+  let dotX = 0, dotY = 0;      // Coordonnées actuelles du dot
 
-  // Met à jour les coordonnées de la souris
+  // Mise à jour des coordonnées de la souris
   document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
   });
 
-  // Fonction d'animation pour un suivi précis (sans traînée)
+  // Animation du dot pour un suivi fluide
   const animateDot = () => {
     const delay = 0.2; // Ajustement pour un suivi fluide
     dotX += (mouseX - dotX) * delay;
     dotY += (mouseY - dotY) * delay;
 
-    // Ajuster les dimensions pour centrer correctement sur la pointe de la souris
+    // Centrage du dot sur la position de la souris
     dot.style.transform = `translate(${dotX - dot.offsetWidth / 2}px, ${dotY - dot.offsetHeight / 2}px)`;
     requestAnimationFrame(animateDot);
   };
@@ -28,6 +28,7 @@ if (dot) {
 } else {
   console.warn('L\'élément avec la classe "cursor-dot" est introuvable.');
 }
+
 
 // ---------------------------------------------------------------------------
 // 2. Gestion du menu mobile
@@ -50,14 +51,13 @@ if (mobileMenuButton && headerButtons) {
 // ---------------------------------------------------------------------------
 // 3. Gestion des boutons avec défilement fluide
 // ---------------------------------------------------------------------------
-const buttons = document.querySelectorAll('.card-button, .header-buttons-item, .header-btn'); 
-// Ceci inclut potentiellement d'autres classes de boutons de navigation
+const buttons = document.querySelectorAll('.card-button, .header-buttons-item, .header-btn');
 
 if (buttons.length > 0) {
   buttons.forEach((button) => {
     button.addEventListener('click', (event) => {
       event.preventDefault(); // Empêche le comportement par défaut
-      const targetId = button.getAttribute('href'); // Récupère la cible
+      const targetId = button.getAttribute('href');  // Cible du lien
       const targetElement = document.querySelector(targetId);
 
       // Ferme le menu mobile s'il est ouvert
@@ -67,7 +67,7 @@ if (buttons.length > 0) {
       }
 
       if (targetElement) {
-        const headerOffset = 80; // Compense la hauteur du header
+        const headerOffset = 80; // Hauteur du header pour compenser le décalage
         const elementPosition = targetElement.offsetTop;
         const offsetPosition = elementPosition - headerOffset;
 
@@ -95,7 +95,7 @@ const revealCards = () => {
     const cardTop = card.getBoundingClientRect().top;
     const windowHeight = window.innerHeight;
 
-    // Lorsque la carte se trouve à 100px du bas de la fenêtre, on la rend visible
+    // Lorsque la carte est à moins de 100px du bas, elle devient visible
     if (cardTop < windowHeight - 100) {
       card.classList.add('visible');
     }
@@ -104,6 +104,5 @@ const revealCards = () => {
 
 // Déclenche l'animation lors du scroll
 window.addEventListener('scroll', revealCards);
-
 // Appel initial au chargement de la page
 revealCards();
