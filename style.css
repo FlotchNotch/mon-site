@@ -105,7 +105,7 @@ body {
   border-radius: 50%;
   pointer-events: none;
   z-index: 1002;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); /* Ajuste ceci si nécessaire */
 }
 
 @media (hover: none) {
@@ -113,6 +113,7 @@ body {
     display: none;
   }
 }
+
 
 .blue-dot {
   display: inline-block;

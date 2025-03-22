@@ -13,12 +13,14 @@ if (dot) {
     mouseY = e.clientY;
   });
 
-  // Fonction d'animation pour créer un effet de traînée
+  // Fonction d'animation pour un suivi précis (sans traînée)
   const animateDot = () => {
-    const delay = 0.1; // Ajustement pour un suivi fluide
+    const delay = 0.2; // Ajustement pour un suivi fluide
     dotX += (mouseX - dotX) * delay;
     dotY += (mouseY - dotY) * delay;
-    dot.style.transform = `translate(${dotX}px, ${dotY}px)`;
+
+    // Ajuster les dimensions pour centrer correctement sur la pointe de la souris
+    dot.style.transform = `translate(${dotX - dot.offsetWidth / 2}px, ${dotY - dot.offsetHeight / 2}px)`;
     requestAnimationFrame(animateDot);
   };
 
@@ -26,7 +28,6 @@ if (dot) {
 } else {
   console.warn('L\'élément avec la classe "cursor-dot" est introuvable.');
 }
-
 
 // ---------------------------------------------------------------------------
 // 2. Gestion du menu mobile
